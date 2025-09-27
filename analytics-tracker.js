@@ -82,10 +82,19 @@ class AnalyticsTracker {
         // Get name parameter
         const nameParam = this.getNameParameter();
         
+        // Debug logging
+        console.log('Analytics tracking:', {
+            domain: domain,
+            success: success,
+            nameParam: nameParam
+        });
+        
         // Determine domain index based on actual domains
         let domainKey = 'domain1';
         if (domain.includes('partieve.de')) domainKey = 'domain2';
         else if (domain.includes('vipinvite.de')) domainKey = 'domain3';
+        
+        console.log('Domain key assigned:', domainKey);
         
         // Update domain stats
         this.data.domains[domainKey].total++;
