@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analytics Debug</title>
+</head>
+<body>
+    <h1>Analytics Debug Test</h1>
+    <div id="results"></div>
+    
+    <script src="analytics-tracker.js"></script>
+    <script>
+        // Test domain detection
+        const domains = [
+            'https://partyeve.de/cook',
+            'https://partieve.de/cook', 
+            'https://vipinvite.de/cook'
+        ];
+        
+        const tracker = new AnalyticsTracker();
+        
+        console.log('Testing domain detection:');
+        domains.forEach((domain, index) => {
+            console.log(`Testing domain ${index + 1}: ${domain}`);
+            tracker.trackRedirect(domain, true);
+        });
+        
+        // Show results
+        setTimeout(() => {
+            const data = tracker.data;
+            document.getElementById('results').innerHTML = `
+                <h3>Analytics Data:</h3>
+                <p>Total Visitors: ${data.totalVisitors}</p>
+                <p>Domain 1 (partyeve.de): ${data.domains.domain1.total}</p>
+                <p>Domain 2 (partieve.de): ${data.domains.domain2.total}</p>
+                <p>Domain 3 (vipinvite.de): ${data.domains.domain3.total}</p>
+                <h3>Recent Visitors:</h3>
+                <pre>${JSON.stringify(data.recentVisitors, null, 2)}</pre>
+            `;
+        }, 1000);
+    </script>
+</body>
+</html>

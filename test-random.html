@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Selection Test</title>
+</head>
+<body>
+    <h1>Random Domain Selection Test</h1>
+    <div id="results"></div>
+    <button onclick="testRandom()">Test Random Selection</button>
+    
+    <script>
+        const domains = [
+            'https://partyeve.de/cook',
+            'https://partieve.de/cook', 
+            'https://vipinvite.de/cook'
+        ];
+        
+        let results = {
+            'https://partyeve.de/cook': 0,
+            'https://partieve.de/cook': 0,
+            'https://vipinvite.de/cook': 0
+        };
+        
+        function testRandom() {
+            // Test 100 random selections
+            for (let i = 0; i < 100; i++) {
+                const randomIndex = Math.floor(Math.random() * domains.length);
+                const domain = domains[randomIndex];
+                results[domain]++;
+            }
+            
+            // Display results
+            document.getElementById('results').innerHTML = `
+                <h3>Random Selection Results (100 tests):</h3>
+                <p>partyeve.de/cook: ${results['https://partyeve.de/cook']} times</p>
+                <p>partieve.de/cook: ${results['https://partieve.de/cook']} times</p>
+                <p>vipinvite.de/cook: ${results['https://vipinvite.de/cook']} times</p>
+                <p><strong>Expected: ~33 each</strong></p>
+            `;
+        }
+    </script>
+</body>
+</html>
