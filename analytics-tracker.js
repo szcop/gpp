@@ -111,6 +111,12 @@ class AnalyticsTracker {
         console.log('Domain key assigned:', domainKey);
         
         // Update domain stats
+        console.log('Before update:', {
+            domainKey: domainKey,
+            currentTotal: this.data.domains[domainKey].total,
+            currentToday: this.data.domains[domainKey].today
+        });
+        
         this.data.domains[domainKey].total++;
         
         if (this.data.domains[domainKey].today === 0) {
@@ -118,6 +124,12 @@ class AnalyticsTracker {
         } else {
             this.data.domains[domainKey].today++;
         }
+        
+        console.log('After update:', {
+            domainKey: domainKey,
+            newTotal: this.data.domains[domainKey].total,
+            newToday: this.data.domains[domainKey].today
+        });
         
         // Update hourly stats for domain
         const hourKey = `${today}_${hour}`;
@@ -199,7 +211,9 @@ class AnalyticsTracker {
     
     saveData() {
         try {
+            console.log('Saving data:', this.data);
             localStorage.setItem(this.storageKey, JSON.stringify(this.data));
+            console.log('Data saved successfully');
         } catch (e) {
             console.warn('Could not save analytics data');
         }
