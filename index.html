@@ -319,6 +319,13 @@
                 const randomIndex = Math.floor(Math.random() * this.domains.length);
                 const domain = this.domains[randomIndex];
                 
+                // Debug logging
+                console.log('Random selection:', {
+                    randomIndex: randomIndex,
+                    domain: domain,
+                    allDomains: this.domains
+                });
+                
                 // Add name parameter if present
                 const nameParam = this.getNameParameter();
                 if (nameParam) {
@@ -458,6 +465,7 @@
                 
                 // Track analytics
                 if (window.analyticsTracker) {
+                    console.log('Calling analytics with domain:', targetDomain);
                     window.analyticsTracker.trackRedirect(targetDomain, true);
                 }
                 
