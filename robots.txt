@@ -1,0 +1,156 @@
+User-agent: *
+Disallow: /
+
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: Slurp
+Disallow: /
+
+User-agent: DuckDuckBot
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+User-agent: Facebookexternalhit
+Disallow: /
+
+User-agent: Twitterbot
+Disallow: /
+
+User-agent: LinkedInBot
+Disallow: /
+
+User-agent: WhatsApp
+Disallow: /
+
+User-agent: TelegramBot
+Disallow: /
+
+User-agent: DiscordBot
+Disallow: /
+
+User-agent: SlackBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot
+Disallow: /
+
+User-agent: MSNBot
+Disallow: /
+
+User-agent: Yahoo
+Disallow: /
+
+User-agent: Ask
+Disallow: /
+
+User-agent: Archive
+Disallow: /
+
+User-agent: Wayback
+Disallow: /
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: web.archive
+Disallow: /
+
+User-agent: Screenshot
+Disallow: /
+
+User-agent: Headless
+Disallow: /
+
+User-agent: Phantom
+Disallow: /
+
+User-agent: Selenium
+Disallow: /
+
+User-agent: Puppeteer
+Disallow: /
+
+User-agent: Playwright
+Disallow: /
+
+User-agent: Chrome-Lighthouse
+Disallow: /
+
+User-agent: GTmetrix
+Disallow: /
+
+User-agent: Pingdom
+Disallow: /
+
+User-agent: UptimeRobot
+Disallow: /
+
+User-agent: StatusCake
+Disallow: /
+
+User-agent: Monitor
+Disallow: /
+
+User-agent: Check
+Disallow: /
+
+User-agent: Test
+Disallow: /
+
+User-agent: Scan
+Disallow: /
+
+User-agent: Probe
+Disallow: /
+
+User-agent: Scraper
+Disallow: /
+
+User-agent: Harvester
+Disallow: /
+
+User-agent: Extractor
+Disallow: /
+
+User-agent: Parser
+Disallow: /
+
+User-agent: Validator
+Disallow: /
+
+User-agent: Checker
+Disallow: /
+
+User-agent: Tester
+Disallow: /
+
+User-agent: Analyzer
+Disallow: /
+
+User-agent: Indexer
+Disallow: /
+
+User-agent: Fetcher
+Disallow: /
+
+User-agent: Downloader
+Disallow: /
+
+User-agent: Collector
+Disallow: /
+
+# Block all crawlers
+User-agent: *
+Crawl-delay: 86400

