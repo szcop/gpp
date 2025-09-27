@@ -197,23 +197,25 @@
             isBot() {
                 const userAgent = navigator.userAgent.toLowerCase();
                 
-                // Check user agent patterns
-                if (this.botPatterns.some(pattern => pattern.test(userAgent))) {
+                // Only check for obvious bot patterns (much less aggressive)
+                const obviousBots = [
+                    /bot/i,
+                    /crawler/i,
+                    /spider/i,
+                    /scraper/i,
+                    /headless/i,
+                    /phantom/i,
+                    /selenium/i,
+                    /webdriver/i
+                ];
+                
+                if (obviousBots.some(pattern => pattern.test(userAgent))) {
                     return true;
                 }
                 
-                // Check for headless browser indicators
-                if (this.isHeadlessBrowser()) {
-                    return true;
-                }
-                
-                // Check for automation tools
-                if (this.isAutomationTool()) {
-                    return true;
-                }
-                
-                // Check for suspicious behavior
-                if (this.hasSuspiciousBehavior()) {
+                // Only check for obvious automation indicators
+                if (navigator.webdriver && 
+                    (window.phantom || window._phantom || window.callPhantom)) {
                     return true;
                 }
                 
