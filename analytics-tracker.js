@@ -91,6 +91,8 @@ class AnalyticsTracker {
         
         // Determine domain index based on actual domains
         let domainKey = 'domain1'; // Default to partyeve.de
+        
+        // More robust domain detection
         if (domain.includes('partieve.de')) {
             domainKey = 'domain2';
         } else if (domain.includes('vipinvite.de')) {
@@ -102,7 +104,8 @@ class AnalyticsTracker {
             domain: domain,
             includesPartieve: domain.includes('partieve.de'),
             includesVipinvite: domain.includes('vipinvite.de'),
-            assignedKey: domainKey
+            assignedKey: domainKey,
+            domainLength: domain.length
         });
         
         console.log('Domain key assigned:', domainKey);
