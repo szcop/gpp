@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Analytics Data</title>
+</head>
+<body>
+    <h1>Clear Analytics Data</h1>
+    <p>This will clear all stored analytics data.</p>
+    <button onclick="clearData()">Clear All Analytics Data</button>
+    <div id="result"></div>
+    
+    <script>
+        function clearData() {
+            try {
+                // Clear localStorage
+                localStorage.removeItem('redirector_analytics');
+                localStorage.removeItem('redirector_index');
+                
+                // Clear any other related data
+                const keys = Object.keys(localStorage);
+                keys.forEach(key => {
+                    if (key.includes('redirector') || key.includes('analytics')) {
+                        localStorage.removeItem(key);
+                    }
+                });
+                
+                document.getElementById('result').innerHTML = 
+                    '<p style="color: green;">✅ Analytics data cleared successfully!</p>' +
+                    '<p>You can now test the redirector with fresh data.</p>';
+                    
+            } catch (e) {
+                document.getElementById('result').innerHTML = 
+                    '<p style="color: red;">❌ Error clearing data: ' + e.message + '</p>';
+            }
+        }
+    </script>
+</body>
+</html>
