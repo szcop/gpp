@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Domain Detection Test</title>
+</head>
+<body>
+    <h1>Domain Detection Test</h1>
+    <div id="results"></div>
+    
+    <script>
+        const testDomains = [
+            'https://partyeve.de/cook',
+            'https://partieve.de/cook', 
+            'https://vipinvite.de/cook'
+        ];
+        
+        function testDomainDetection() {
+            let results = '';
+            
+            testDomains.forEach((domain, index) => {
+                let domainKey = 'domain1';
+                if (domain.includes('partieve.de')) {
+                    domainKey = 'domain2';
+                } else if (domain.includes('vipinvite.de')) {
+                    domainKey = 'domain3';
+                }
+                
+                results += `<p><strong>Domain ${index + 1}:</strong> ${domain}</p>`;
+                results += `<p>Includes partieve.de: ${domain.includes('partieve.de')}</p>`;
+                results += `<p>Includes vipinvite.de: ${domain.includes('vipinvite.de')}</p>`;
+                results += `<p>Assigned Key: ${domainKey}</p><hr>`;
+            });
+            
+            document.getElementById('results').innerHTML = results;
+        }
+        
+        // Run test automatically
+        testDomainDetection();
+    </script>
+</body>
+</html>
