@@ -82,10 +82,10 @@ class AnalyticsTracker {
         // Get name parameter
         const nameParam = this.getNameParameter();
         
-        // Determine domain index
+        // Determine domain index based on actual domains
         let domainKey = 'domain1';
-        if (domain.includes('domain2')) domainKey = 'domain2';
-        else if (domain.includes('domain3')) domainKey = 'domain3';
+        if (domain.includes('partieve.de')) domainKey = 'domain2';
+        else if (domain.includes('vipinvite.de')) domainKey = 'domain3';
         
         // Update domain stats
         this.data.domains[domainKey].total++;
@@ -104,11 +104,9 @@ class AnalyticsTracker {
             this.data.hourlyStats[hourKey] = 1;
         }
         
-        // Update success rate
+        // Update success rate (calculate as percentage)
         if (success) {
-            this.data.domains[domainKey].success = Math.min(100, this.data.domains[domainKey].success + 1);
-        } else {
-            this.data.domains[domainKey].success = Math.max(0, this.data.domains[domainKey].success - 1);
+            this.data.domains[domainKey].success = 100; // If redirect happened, it's 100% success
         }
         
         // Add to recent visitors with name parameter
