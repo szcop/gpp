@@ -90,9 +90,20 @@ class AnalyticsTracker {
         });
         
         // Determine domain index based on actual domains
-        let domainKey = 'domain1';
-        if (domain.includes('partieve.de')) domainKey = 'domain2';
-        else if (domain.includes('vipinvite.de')) domainKey = 'domain3';
+        let domainKey = 'domain1'; // Default to partyeve.de
+        if (domain.includes('partieve.de')) {
+            domainKey = 'domain2';
+        } else if (domain.includes('vipinvite.de')) {
+            domainKey = 'domain3';
+        }
+        
+        // Debug: Show what we're checking
+        console.log('Domain detection:', {
+            domain: domain,
+            includesPartieve: domain.includes('partieve.de'),
+            includesVipinvite: domain.includes('vipinvite.de'),
+            assignedKey: domainKey
+        });
         
         console.log('Domain key assigned:', domainKey);
         
