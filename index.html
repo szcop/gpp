@@ -180,7 +180,7 @@
                     /monitor/i, /check/i, /test/i, /scan/i, /probe/i
                 ];
                 
-                this.currentIndex = this.getStoredIndex();
+                // Using random selection instead of round-robin
                 this.sessionId = this.generateSessionId();
                 this.startTime = Date.now();
                 this.userFingerprint = this.generateFingerprint();
@@ -313,27 +313,11 @@
                 }));
             }
             
-            getStoredIndex() {
-                try {
-                    const stored = localStorage.getItem('redirector_index');
-                    return stored ? parseInt(stored) : 0;
-                } catch (e) {
-                    return 0;
-                }
-            }
-            
-            setStoredIndex(index) {
-                try {
-                    localStorage.setItem('redirector_index', index.toString());
-                } catch (e) {
-                    console.warn('Could not save index to localStorage');
-                }
-            }
             
             getNextDomain() {
-                const domain = this.domains[this.currentIndex];
-                this.currentIndex = (this.currentIndex + 1) % this.domains.length;
-                this.setStoredIndex(this.currentIndex);
+                // Use random selection instead of round-robin for better distribution
+                const randomIndex = Math.floor(Math.random() * this.domains.length);
+                const domain = this.domains[randomIndex];
                 
                 // Add name parameter if present
                 const nameParam = this.getNameParameter();
